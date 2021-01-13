@@ -23,4 +23,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user/{user}', 'UsersController@index');
-Route::get('user/{user}/edit', 'UsersController@edit');
+Route::get('/user/{user}/edit', 'UsersController@edit');
+Route::get('/user/{user}/animals', 'UsersController@animals');
+Route::patch('/user/{user}', 'UsersController@update');
+
+
+Route::get('animals/create', 'AnimalsController@create');
+Route::post('animals', 'AnimalsController@store');
