@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -40,5 +41,15 @@ class User extends Authenticatable
     public function animals()
     {
         return $this->hasMany(Animal::class);
+    }
+
+    public function getCowCount()
+    {
+        $foo = DB::table('animals')
+            ->where('user_id', $this->id)
+            ->where('spiece', 'Cow')
+            ->get();
+
+        return $foo->count();
     }
 }
