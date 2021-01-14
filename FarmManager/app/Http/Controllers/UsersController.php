@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\User;
 use App\Animal;
+use Illuminate\Support\Facades\Cache;
+
+
 
 class UsersController extends Controller
 {
@@ -52,7 +55,15 @@ class UsersController extends Controller
     }
     public function animals(User $user)
     {
-        $animals = Animal::whereIn('user_id', $user)->latest()->paginate(10);
+        $currentPage = request()->get('page', 1);
+
+        $animals = Cache::remember(
+            'animals.collection' . $user->id . $currentPage,
+            now()->addseconds(60),
+            function () use ($user) {
+                return Animal::whereIn('user_id', $user)->latest()->paginate(10);
+            }
+        );
         return view('users.animals', compact('user', 'animals'));
     }
     public function random()

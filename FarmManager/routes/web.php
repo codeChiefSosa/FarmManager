@@ -19,6 +19,7 @@ Route::get('/', 'Auth\LoginController@showLoginForm');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/randomDog', 'HomeController@randomDog');
 
 Route::get('/user/random', 'UsersController@random');
 Route::get('/user/{user}', 'UsersController@index');

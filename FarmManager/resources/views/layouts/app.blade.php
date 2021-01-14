@@ -44,6 +44,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
+                        <a href="/randomDog">
+                            <img src="/svg/dog_navbar.svg" class="mr-3" style="width: 35px;" alt="">
+                        </a>
                         <a href="/user/random">
                             <input type="image" id="random" src="/svg/dice_navbar.svg" style="width:35px" class="mr-4" alt="">
                         </a>

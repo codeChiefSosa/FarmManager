@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -25,5 +27,16 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         return view('users.index', compact('user'));
+    }
+    public function randomDog()
+    {
+        $client = new Client();
+        $url = 'http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true';
+
+        $response = $client->request('GET', $url);
+        $responseBody = json_decode($response->getBody());
+        $dogImage = $responseBody[0];
+
+        return view('randomDog', compact('dogImage'));
     }
 }
