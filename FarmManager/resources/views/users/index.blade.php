@@ -21,17 +21,24 @@
                 <div class="row mt-5">
                     <div class="col align-self-start d-flex">
                         <img src="/svg/chicken.svg" class="ml-3" height="75px" alt="">
-                        <h1 class="mt-4">0</h1>
+                        <h1 class="mt-4">{{$user->getAnimalCount('Chicken')}}</h1>
                     </div>
                     <div class="col align-self-center d-flex">
                         <img src="/svg/cow.svg" class="ml-3" height="75px" alt="">
-                        <h1 class="mt-4">{{$user->getCowCount()}}</h1>
+                        <h1 class="mt-4">{{$user->getAnimalCount('Cow')}}</h1>
                     </div>
                     <div class="col align-self-end d-flex">
                         <img src="/svg/horse.svg" class="ml-3" height=75px alt="">
-                        <h1 class="mt-4">0</h1>
+                        <h1 class="mt-4">{{$user->getAnimalCount('Horse')}}</h1>
                     </div>
                 </div>
+                @can('update',$user)
+                <div class="row">
+                    <div class='col-12 pt-3'>
+                        <a href="/animal/create" class="btn btn-primary btn-block">Add new animal!</a>
+                    </div>
+                </div>
+                @endcan
             </div>
         </div>
     </div>

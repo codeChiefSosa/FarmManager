@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($user->animals as $animal)
+                @foreach($animals as $animal)
                 <tr>
                     <td>{{$animal->name}}</td>
                     <td>{{$animal->spiece}}</td>
@@ -24,6 +24,11 @@
                     @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            {{$animals->links()}}
+        </div>
     </div>
 </div>
 @endsection

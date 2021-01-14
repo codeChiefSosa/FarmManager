@@ -9,6 +9,9 @@
             <div class="form-group row pt-3">
                 <label for="name" class="col-4"><b>Username</b></label>
                 <input type="text" id="name" name="name" value="{{Auth::user()->name}}" class="col-4">
+                @error('name')
+                <strong class="text-danger pl-2 pt-2">{{$message}}</strong>
+                @enderror
             </div>
             <div class="form-group row pt-3">
                 <label for="description" class="col-4"><b>Description</b></label>
@@ -20,7 +23,7 @@
             </div>
         </div>
         <div class="text-center pt-2">
-            <button class="btn btn-primary col-4">Save changes</button>
+            <button class="btn btn-primary col-4 border-white">Save changes</button>
             <div>
     </form>
 </div>

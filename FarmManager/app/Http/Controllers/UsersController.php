@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\User;
+use App\Animal;
 
 class UsersController extends Controller
 {
@@ -30,7 +31,6 @@ class UsersController extends Controller
         $data = request()->validate(
             [
                 'name' => 'required',
-                'description' => 'required',
                 'image' => 'image'
             ]
         );
@@ -52,6 +52,12 @@ class UsersController extends Controller
     }
     public function animals(User $user)
     {
-        return view('users.animals', compact('user'));
+        $animals = Animal::whereIn('user_id', $user)->latest()->paginate(10);
+        return view('users.animals', compact('user', 'animals'));
+    }
+    public function random()
+    {
+        $user = User::inRandomOrder()->first();
+        return redirect("user/{$user->id}");
     }
 }
