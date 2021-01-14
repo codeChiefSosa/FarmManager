@@ -5,7 +5,7 @@
     <form action="/user/{{$user->id}}" enctype="multipart/form-data" method="POST">
         @csrf
         @method('PATCH')
-        <div class="col-10 mx-auto" style="border:1px solid rgba(0,0,0,0.5)">
+        <div class="col-10 mx-auto" style="border:1px solid rgba(0,0,0,0.5);background:#f0f0f0;">
             <div class="form-group row pt-3">
                 <label for="name" class="col-4"><b>Username</b></label>
                 <input type="text" id="name" name="name" value="{{Auth::user()->name}}" class="col-4">

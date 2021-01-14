@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Animal;
 
 class AnimalsController extends Controller
@@ -15,9 +16,9 @@ class AnimalsController extends Controller
     {
         $data = request()->validate(
             [
-                'name' => 'required',
-                'spiece' => 'required',
-                'points' => ''
+                'name' => ['required', 'max:30'],
+                'spiece' => ['required', 'in:Cow,Chicken,Horse'],
+                'points' => ['between:0,20', 'numeric', 'nullable']
             ]
         );
         $user = auth()->user();
@@ -31,7 +32,27 @@ class AnimalsController extends Controller
             ]
         );
 
-        dd($animal);
-        //return redirect('/user/' . $user->id);
+        return redirect('/user/' . $user->id);
+    }
+
+    public function edit(Animal $animal)
+    {
+        $this->authorize('update', $animal);
+        return view('animals.edit', compact('animal'));
+    }
+
+    public function destroy(Animal $animal)
+    {
+        Animal::destroy($animal->id);
+        return redirect('/user/' . $animal->user_id . '/animals');
+    }
+    public function update(Animal $animal)
+    {
+        $data = request()->validate([
+            'name' => ['required', 'max:30'],
+            'points' => ''
+        ]);
+        $animal->update($data);
+        return redirect('/user/' . $animal->user_id . '/animals');
     }
 }

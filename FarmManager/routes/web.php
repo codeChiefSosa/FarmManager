@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Auth::routes();
 
@@ -28,5 +26,8 @@ Route::get('/user/{user}/animals', 'UsersController@animals');
 Route::patch('/user/{user}', 'UsersController@update');
 
 
-Route::get('animals/create', 'AnimalsController@create');
-Route::post('animals', 'AnimalsController@store');
+Route::get('animal/create', 'AnimalsController@create');
+Route::get('animal/{animal}/edit', 'AnimalsController@edit');
+Route::post('animal', 'AnimalsController@store');
+Route::patch('animal/{animal}', 'AnimalsController@update');
+Route::delete('animal/{animal}', 'AnimalsController@destroy');
