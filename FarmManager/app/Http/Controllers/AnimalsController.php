@@ -18,7 +18,6 @@ class AnimalsController extends Controller
             [
                 'name' => ['required', 'max:30'],
                 'spiece' => ['required', 'in:Cow,Chicken,Horse'],
-                'points' => ['between:0,20', 'numeric', 'nullable']
             ]
         );
         $user = auth()->user();
@@ -27,7 +26,6 @@ class AnimalsController extends Controller
             [
                 'user_id' => $user->id,
                 'name' => $data['name'],
-                'points' => $data['points'],
                 'spiece' => $data['spiece']
             ]
         );

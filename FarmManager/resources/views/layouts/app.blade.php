@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div id="app" style="background-image: url(/images/test3_background.jpg);
+    <div id="app" style="background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(/images/test3_background.jpg);
     background-position: center;
     background-size: cover; height:100%">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -84,7 +84,7 @@
             </div>
         </nav>
 
-        <main class="py-4" style="">
+        <main class="py-4">
             @yield('content')
         </main>
     </div>

@@ -8,7 +8,6 @@
                 <tr>
                     <th>Name</th>
                     <th>Spiece</th>
-                    <th>Points</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,7 +15,6 @@
                 <tr>
                     <td>{{$animal->name}}</td>
                     <td>{{$animal->spiece}}</td>
-                    <td>{{$animal->points}}</td>
                     @can('update',$user)
                     <td><a href="/animal/{{$animal->id}}/edit">Edit</a></td>
                     @endcan

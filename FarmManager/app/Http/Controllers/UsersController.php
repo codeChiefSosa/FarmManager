@@ -34,6 +34,7 @@ class UsersController extends Controller
         $data = request()->validate(
             [
                 'name' => 'required',
+                'description' => '',
                 'image' => 'image'
             ]
         );

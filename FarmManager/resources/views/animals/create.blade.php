@@ -28,15 +28,6 @@
             </div>
             @enderror
         </div>
-        <div class="form-group row pt-3">
-            <label for="points" class="col-4 text-white"><b>Points: </b></label>
-            <input type="number" id="points" name="points" class="col-4 pl-0">
-            @error('points')
-            <div class="text-danger pl-2" role="alert">
-                <strong>{{$message}}</strong>
-            </div>
-            @enderror
-        </div>
         <div class="text-center pt-2">
             <button class="btn btn-primary col-4 border border-white">Save changes</button>
             <div>

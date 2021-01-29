@@ -17,7 +17,6 @@ class CreateAnimalsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->double('points')->nullable();
             $table->string('spiece');
             $table->timestamps();
         });
